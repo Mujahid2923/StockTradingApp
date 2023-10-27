@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_075333) do
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.integer "price"
+    t.integer "status", default: 0
     t.bigint "user_id"
     t.bigint "business_id"
     t.datetime "created_at", null: false
