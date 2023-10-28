@@ -2,10 +2,21 @@
 
 # app/models/user.rb
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  cattr_accessor :current_user
+
+  devise(
+    :database_authenticatable,
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :validatable,
+    :jwt_authenticatable,
+    jwt_revocation_strategy: self
+  )
+
+  include Devise::JWT::RevocationStrategies::JTIMatcher
+
+  belongs_to :role
 
   has_many :businesses, inverse_of: :user, dependent: :destroy
   has_many :purchases, inverse_of: :user, dependent: :destroy
@@ -13,10 +24,6 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :role, presence: true
 
-  enum role: {
-    owner: 0,
-    buyer: 1
-  }
+  delegate :owner?, :buyer?, to: :role
 end

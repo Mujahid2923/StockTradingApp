@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # db/migrate/20231027063222_create_businesses.rb
-class CreateBusinesses < ActiveRecord::Migration[7.0]
+class CreateBusinesses < ActiveRecord::Migration[6.1]
   def change
     create_table :businesses do |t|
       t.string :name

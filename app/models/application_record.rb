@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# app/models/acclication_record.rb
 class ApplicationRecord < ActiveRecord::Base
-  primary_abstract_class
+  self.abstract_class = true
 end

@@ -10,6 +10,7 @@ require 'test_prof/recipes/rspec/let_it_be'
 require 'database_cleaner/active_record'
 require 'simplecov'
 require 'rake'
+require 'faker'
 
 Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
 
@@ -21,22 +22,13 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  config.include ActionView::Helpers::TranslationHelper
-  config.include FactoryBot::Syntax::Methods
   config.include RSpec::Benchmark::Matchers
   config.include ActiveJob::TestHelper
-
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
-  config.infer_spec_type_from_file_location!
-  config.order = :random
-
-  # Filter lines from Rails gems in backtraces.
-  config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+  config.include ApplicationHelper
+  config.include FactoryBot::Syntax::Methods
+  config.include ActionView::Helpers::TranslationHelper
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :controller
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -50,6 +42,14 @@ RSpec.configure do |config|
   config.append_after do
     DatabaseCleaner.clean
   end
+
+  config.filter_rails_from_backtrace!
+  config.fixture_path = Rails.root.join('/spec/fixtures')
+  config.use_transactional_fixtures = true
+  config.infer_spec_type_from_file_location!
+  config.order = :random
+
+  Rails.application.load_tasks
 end
 
 Shoulda::Matchers.configure do |config|
