@@ -13,5 +13,22 @@ FactoryBot.define do
     trait :buyer do
       role { Role.find_or_create_by!(name: 1) }
     end
+
+    transient do
+      with_permissions { {} }
+    end
+
+    after(:create) do |user, evaluator|
+      evaluator.with_permissions.each_pair do |resource, actions|
+        actions = [actions] unless actions.is_a?(Array)
+
+        create(
+          :permission,
+          accessor: user.role,
+          resource: resource,
+          actions: actions.index_with { |_key| true }
+        )
+      end
+    end
   end
 end

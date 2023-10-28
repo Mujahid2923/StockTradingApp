@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
   include HttpAcceptLanguage::AutoLocale
   include ActiveStorage::SetCurrent
 
-  before_action :authenticate_user!
   before_action :set_current_user
 
   respond_to :json
+
+  binding.pry
 
   def set_current_user
     User.current_user = current_user if current_user

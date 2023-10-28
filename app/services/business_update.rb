@@ -13,6 +13,8 @@ class BusinessUpdate
   def call
     @business = Business.find(id)
 
+    authorize! @business, to: :create?
+
     @business.update(params) ? true : false
   end
 end

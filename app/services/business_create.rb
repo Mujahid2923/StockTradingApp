@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Business Creation
-class BusinessCreate
+class BusinessCreate < Base
   attr_accessor :current_user, :params
 
   def initialize(current_user:, params:)
@@ -10,7 +10,9 @@ class BusinessCreate
   end
 
   def call
-    @business = Business.new(params)
+    @business = Business.create!(params)
+    binding.pry
+    authorize! @business, to: :create?
 
     @business.save ? true : false
   end

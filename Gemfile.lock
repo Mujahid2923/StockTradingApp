@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.5)
+      ruby-next-core (>= 0.14.0)
     actioncable (6.1.7.6)
       actionpack (= 6.1.7.6)
       activesupport (= 6.1.7.6)
@@ -344,6 +346,7 @@ GEM
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
+    ruby-next-core (0.15.3)
     ruby-progressbar (1.13.0)
     sexp_processor (4.17.0)
     shellany (0.0.1)
@@ -393,6 +396,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy
   active_model_serializers
   activemodel
   benchmark-ips

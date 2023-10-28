@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_27_075333) do
+ActiveRecord::Schema.define(version: 2023_10_28_153051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2023_10_27_075333) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_orders_on_business_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string "resource", null: false
+    t.jsonb "actions", default: {}, null: false
+    t.string "accessor_type"
+    t.bigint "accessor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accessor_type", "accessor_id"], name: "index_permissions_on_accessor"
+    t.index ["actions"], name: "index_permissions_on_actions"
+    t.index ["resource", "accessor_id", "accessor_type"], name: "index_permissions_on_resource_and_accessor_id_and_accessor_type", unique: true
   end
 
   create_table "purchases", force: :cascade do |t|

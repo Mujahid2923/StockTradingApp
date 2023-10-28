@@ -4,7 +4,7 @@
 module Api
   module V1
     # Implementation of Business Controller
-    class BusinessesController < ApplicationController
+    class BusinessesController < BaseController
       def index
         render(
           json: BusinessQuery.new(current_user: current_user).run,
