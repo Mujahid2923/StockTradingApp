@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class ApplicationController < ActionController::Base # rubocop:disable Style/Documentation
+# app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
   include ApiErrors::ErrorHandler
   include HttpAcceptLanguage::AutoLocale
   include ActiveStorage::SetCurrent
@@ -13,6 +14,8 @@ class ApplicationController < ActionController::Base # rubocop:disable Style/Doc
   def set_current_user
     User.current_user = current_user if current_user
   end
+
+  after_action -> { request.session_options[:skip] = true }
 
   def route_not_found
     render json: { errors: ['Page not found.'] }, status: :not_found

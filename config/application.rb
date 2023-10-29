@@ -11,5 +11,6 @@ module StockTradingApp
 
     config.eager_load_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('permissions/*')
+    config.api_only = true
   end
 end

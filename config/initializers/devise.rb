@@ -15,9 +15,10 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
+  config.navigational_formats = []
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.dig(:devise_jwt_secret_key)
+    jwt.secret = ENV.fetch('JWT_SECRET_KEY', nil)
     jwt.dispatch_requests = [
       ['POST', %r{^/sign_in}]
     ]

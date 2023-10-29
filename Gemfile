@@ -14,6 +14,7 @@ gem 'active_model_serializers'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-jwt'
+gem 'dotenv-rails'
 gem 'http_accept_language'
 gem 'importmap-rails'
 gem 'jbuilder'

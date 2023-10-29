@@ -22,13 +22,10 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  config.include RSpec::Benchmark::Matchers
-  config.include ActiveJob::TestHelper
   config.include ApplicationHelper
   config.include FactoryBot::Syntax::Methods
   config.include ActionView::Helpers::TranslationHelper
   config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :controller
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
