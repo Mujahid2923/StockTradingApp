@@ -1,24 +1,55 @@
-# StockTradingApp
+## Initial Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
+### Prerequisites
 
-Things you may want to cover:
+The setups steps expect following tools installed on the system.
 
-* Ruby version
+- Git
+- Ruby 3.0.6
+- Rails 6.1.7.6
+- PostgreSQL
 
-* System dependencies
+##### 1. Check out the repository and install the needed gem
 
-* Configuration
+```bash
+# CLONE THE REPO
+git clone https://github.com/mujahid-ism/StockTradingApp.git
+# CD INTO THE DIRECTORY
+cd StockTradingApp
+# install gem 
+bundle install
+```
 
-* Database creation
+##### 2. Create and setup the database
 
-* Database initialization
+```bash
+bundle exec rake db:create db:migrate
+```
 
-* How to run the test suite
+##### 3 Run rake task for seed and update for Authorization
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rake seed:permissions
+rake update:permissions
+```
 
-* Deployment instructions
+##### 4. Run test and make sure all tests pass
 
-* ...
+```bash
+rspec
+```
+
+##### 5. Start server and try your REST services!
+
+```bash
+rails s
+```
+
+## .env
+JWT_SECRET_KEY
+
+##### 5. ER Diagram of the Application
+
+![erd](https://github.com/SELISEdigitalplatforms/l3-rails-ewbuchs-partnerportal/assets/108412058/b0e7ef29-a223-4f23-8ca2-1d86138c362e)
+
