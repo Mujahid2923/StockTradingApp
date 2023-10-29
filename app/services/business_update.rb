@@ -1,20 +1,12 @@
 # frozen_string_literal: true
 
 # Business Update
-class BusinessUpdate
-  attr_accessor :user, :params, :id
-
-  def initialize(id:, current_user:, params:)
-    @user = current_user
-    @params = params
-    @id = id
-  end
-
+class BusinessUpdate < Base
   def call
-    @business = Business.find(id)
+    business = Business.find(id)
 
-    authorize! @business, to: :create?
+    authorize! business, to: :update?
 
-    @business.update(params) ? true : false
+    business.update(params) ? true : false
   end
 end

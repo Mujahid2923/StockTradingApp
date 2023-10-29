@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 def user_token(user)
-  binding.pry
   post user_session_url, params: { user: { email: user.email, password: user.password } }
   response.header['Authorization']
 end

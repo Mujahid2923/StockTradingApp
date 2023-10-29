@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-# app/controllers/businesses_controller.rb
 module Api
   module V1
-    # Implementation of Business Controller
-    class BusinessesController < BaseController
+    class BusinessesController < ApplicationController # rubocop:disable Style/Documentation
       def index
         render(
           json: BusinessQuery.new(current_user: current_user).run,
@@ -14,17 +12,17 @@ module Api
 
       def create
         if BusinessCreate.new(current_user: current_user, params: business_params).call
-          render json: { message: 'Business Created Successfully' }, status: :ok
+          render json: { message: I18n.t('create.business.success') }, status: :ok
         else
-          render json: { errors: 'Business Created Failed' }, status: :unprocessable_entity
+          render json: { errors: I18n.t('create.business.errors') }, status: :unprocessable_entity
         end
       end
 
       def update
         if BusinessUpdate.new(id: params[:id], current_user: current_user, params: business_params).call
-          render json: { message: 'Business Updated Successfully' }, status: :ok
+          render json: { message: I18n.t('update.business.success') }, status: :ok
         else
-          render json: { errors: 'Business Update Failed' }, status: :unprocessable_entity
+          render json: { errors: I18n.t('update.business.errors') }, status: :unprocessable_entity
         end
       end
 

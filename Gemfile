@@ -8,6 +8,7 @@ gem 'puma', '>= 5.6.4'
 gem 'rails', '~> 6.1.4'
 
 gem 'action_policy'
+gem 'action_policy-graphql'
 gem 'activemodel'
 gem 'active_model_serializers'
 gem 'bootsnap', require: false

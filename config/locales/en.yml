@@ -2,3 +2,17 @@ en:
   hello: 'Hello world'
   permission:
     role_only: Permissions can only be set for roles at the moment
+  create:
+    business:
+      success: Business Created Successfully
+      errors: Business Creation Failed
+    order:
+      success: Order Created Successfully
+      errors: Order Creation Failed
+  update:
+    business:
+      success: Business Updated Successfully
+      errors: Business Update Failed
+    order:
+      success: Order Updated Successfully
+      errors: Order Update Failed

@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-# app/controllers/sessions_controller.rb
-
 module Api
   module V1
-    # Overriding Session Controller
-    class SessionsController < Devise::SessionsController
+    class SessionsController < Devise::SessionsController # rubocop:disable Style/Documentation
       def create
         super
       end

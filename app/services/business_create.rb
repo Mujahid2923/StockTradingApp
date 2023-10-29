@@ -2,18 +2,11 @@
 
 # Business Creation
 class BusinessCreate < Base
-  attr_accessor :current_user, :params
-
-  def initialize(current_user:, params:)
-    @current_user = current_user
-    @params = params
-  end
-
   def call
-    @business = Business.create!(params)
-    binding.pry
-    authorize! @business, to: :create?
+    authorize! Business, to: :create?
 
-    @business.save ? true : false
+    business = Business.new(params)
+
+    business.save ? true : false
   end
 end

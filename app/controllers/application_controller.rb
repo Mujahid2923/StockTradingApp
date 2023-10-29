@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
-# app/controllers/application_controller.rb
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base # rubocop:disable Style/Documentation
   include ApiErrors::ErrorHandler
   include HttpAcceptLanguage::AutoLocale
   include ActiveStorage::SetCurrent
 
   before_action :set_current_user
+  before_action :authenticate_user!
 
   respond_to :json
-
-  binding.pry
 
   def set_current_user
     User.current_user = current_user if current_user
