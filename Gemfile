@@ -52,3 +52,5 @@ group :development, :test do
   gem 'sprockets', '~> 3'
   gem 'test-prof'
 end
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
