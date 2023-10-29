@@ -12,3 +12,5 @@
 bin/
 log
 tmp
+.env
+spec/failed_specs.txt

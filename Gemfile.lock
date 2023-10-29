@@ -1,6 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.5)
+      ruby-next-core (>= 0.14.0)
+    action_policy-graphql (0.5.3)
+      action_policy (>= 0.5.0)
+      graphql (>= 1.9.3)
+      ruby-next-core (>= 0.10.0)
     actioncable (6.1.7.6)
       actionpack (= 6.1.7.6)
       activesupport (= 6.1.7.6)
@@ -120,6 +126,10 @@ GEM
       warden-jwt_auth (~> 0.5)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     dry-auto_inject (0.9.0)
       dry-container (>= 0.3.4)
     dry-configurable (0.12.1)
@@ -144,6 +154,7 @@ GEM
     formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    graphql (1.12.24)
     guard (2.18.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -344,6 +355,7 @@ GEM
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
+    ruby-next-core (0.15.3)
     ruby-progressbar (1.13.0)
     sexp_processor (4.17.0)
     shellany (0.0.1)
@@ -393,6 +405,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy
+  action_policy-graphql
   active_model_serializers
   activemodel
   benchmark-ips
@@ -405,6 +419,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  dotenv-rails
   factory_bot_rails
   faker
   guard-rspec

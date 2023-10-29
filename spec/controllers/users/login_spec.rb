@@ -4,7 +4,7 @@ require 'rails_helper'
 
 module Api
   module V1
-    RSpec.describe SessionsController, type: :request do
+    RSpec.describe Api::V1::SessionsController, type: :request do
       let_it_be(:user) { create(:user, :owner) }
 
       context 'with sign in' do

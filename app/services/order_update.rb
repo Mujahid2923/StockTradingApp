@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
 # Business Update
-class OrderUpdate
-  attr_accessor :user, :params, :id
-
-  def initialize(id:, current_user:, params:)
-    @user = current_user
-    @params = params
-    @id = id
-  end
-
+class OrderUpdate < Base
   def call
     @order = Order.find(id)
+
+    authorize! @order, to: :update?
 
     update_purchase_list
 

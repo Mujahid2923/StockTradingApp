@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-# app/controllers/orders_controller.rb
 module Api
   module V1
-    # Implementation of Order Controller
-    class OrdersController < ApplicationController
+    class OrdersController < ApplicationController # rubocop:disable Style/Documentation
       def index
         render(
           json: OrderQuery.new(current_user: current_user).run,
@@ -14,17 +12,17 @@ module Api
 
       def create
         if OrderCreate.new(current_user: current_user, params: order_params).call
-          render json: { message: 'Order Created Successfully' }, status: :ok
+          render json: { message: I18n.t('create.order.success') }, status: :ok
         else
-          render json: { errors: 'Order Creation Failed' }, status: :unprocessable_entity
+          render json: { errors: I18n.t('create.order.errors') }, status: :unprocessable_entity
         end
       end
 
       def update
         if OrderUpdate.new(id: params[:id], current_user: current_user, params: order_update_params).call
-          render json: { message: 'Order Updated Successfully' }, status: :ok
+          render json: { message: I18n.t('update.order.success') }, status: :ok
         else
-          render json: { errors: 'Order Update Failed' }, status: :unprocessable_entity
+          render json: { errors: I18n.t('update.order.errors') }, status: :unprocessable_entity
         end
       end
 
