@@ -63,4 +63,5 @@ RAILS_MASTER_KEY
 
 ## ER Diagram of the Application
 
-![erd](https://github.com/SELISEdigitalplatforms/l3-rails-ewbuchs-partnerportal/assets/108412058/b0e7ef29-a223-4f23-8ca2-1d86138c362e)
+![erd](https://github.com/mujahid-ism/StockTradingApp/assets/108412058/1776bbf0-3915-4f3c-aa4a-9c62f7f810f5)
+
