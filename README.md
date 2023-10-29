@@ -52,15 +52,15 @@ rails s
 sudo docker-compose build && sudo docker-compose up
 ```
 
-## .env
-JWT_SECRET_KEY
-RAILS_ENV
-POSTGRES_HOST
-POSTGRES_DB
-POSTGRES_USER
-POSTGRES_PASSWORD
-RAILS_MASTER_KEY
+##### 7. env
+JWT_SECRET_KEY  
+RAILS_ENV  
+POSTGRES_HOST  
+POSTGRES_DB  
+POSTGRES_USER  
+POSTGRES_PASSWORD  
+RAILS_MASTER_KEY  
 
-##### 5. ER Diagram of the Application
+## ER Diagram of the Application
 
 ![erd](https://github.com/SELISEdigitalplatforms/l3-rails-ewbuchs-partnerportal/assets/108412058/b0e7ef29-a223-4f23-8ca2-1d86138c362e)
